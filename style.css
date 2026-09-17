@@ -36,3 +36,190 @@ body.lang-transition-in .app-shell{animation:languageSettle .16s ease both}
 @media (prefers-reduced-motion:reduce){.app-shell,.reveal-on-scroll,.lang-btn{transition:none!important;animation:none!important}.reveal-on-scroll{opacity:1;transform:none}}
 @media(min-width:1001px){body[dir="rtl"] .sidebar{left:auto;right:0;border-right:0;border-left:1px solid var(--line)}body[dir="rtl"] .main{margin-left:0;margin-right:255px}}
 @media(max-width:1000px){body[dir="rtl"] .sidebar{left:auto;right:0;border-right:0;border-left:1px solid var(--line)}body[dir="rtl"] .main{margin-left:0;margin-right:78px}}
+
+
+/* Responsive mobile layout — desktop design remains unchanged */
+@media (max-width: 650px){
+  body{overflow-x:hidden}
+
+  .app-shell{display:block;min-height:100vh}
+
+  /* Bottom navigation on phones */
+  .sidebar{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    top:auto;
+    width:100%;
+    height:68px;
+    padding:7px 8px;
+    border-right:0;
+    border-left:0;
+    border-top:1px solid var(--line);
+    flex-direction:row;
+    align-items:center;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    z-index:20;
+  }
+  body.dark .sidebar{background:rgba(21,27,35,.96)}
+
+  .brand,.sidebar-bottom{display:none}
+  .sidebar nav{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:4px;
+  }
+  .nav-item,
+  .nav-item:not(.active)::after{
+    font-size:10px;
+  }
+  .nav-item{
+    min-height:54px;
+    padding:5px 2px;
+    justify-content:center;
+    flex-direction:column;
+    gap:2px;
+    border-radius:10px;
+    line-height:1;
+  }
+  .nav-item span{
+    width:auto;
+    font-size:17px;
+    line-height:1.1;
+  }
+  .nav-item b{
+    display:block;
+    font-size:10px;
+    font-weight:700;
+    white-space:nowrap;
+  }
+
+  .main,
+  html[dir="rtl"] .main,
+  body[dir="rtl"] .main{
+    margin:0;
+    width:100%;
+    padding:16px 14px 86px;
+  }
+
+  .topbar{
+    margin-bottom:18px;
+    gap:10px;
+  }
+  .topbar h1{font-size:21px}
+  .eyebrow{font-size:8px;letter-spacing:1.15px}
+  .top-actions{gap:5px;flex-shrink:0}
+  .icon-btn{padding:8px 9px}
+  .profile{padding:7px}
+  .avatar{width:27px;height:27px}
+  .lang-switch{padding:2px}
+  .lang-btn{padding:6px 8px;font-size:10px}
+
+  .hero{
+    padding:23px 20px;
+    border-radius:16px;
+    min-height:0;
+  }
+  .hero h2{
+    font-size:22px;
+    line-height:1.25;
+    margin-bottom:10px;
+  }
+  .hero p:not(.eyebrow){
+    font-size:12px;
+    line-height:1.55;
+    margin-bottom:16px;
+  }
+  .hero .primary{padding:10px 13px;font-size:12px}
+
+  .stats-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+    margin:12px 0;
+  }
+  .stat-card{
+    padding:14px;
+    border-radius:13px;
+  }
+  .stat-card strong{font-size:23px}
+  .stat-card span,.stat-card small{font-size:10px}
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .panel{
+    padding:15px;
+    border-radius:13px;
+  }
+  .panel-head{gap:8px}
+  .panel h3{font-size:14px}
+  .panel-head p{font-size:10px}
+  .road-item{
+    grid-template-columns:36px minmax(0,1fr) auto;
+    gap:8px;
+    padding:10px 0;
+  }
+  .road-icon{width:36px;height:36px}
+  .road-item strong{font-size:11px}
+  .road-item small{font-size:9px}
+  .pill{font-size:9px;padding:4px 6px}
+
+  .section-intro{
+    margin:5px 0 15px;
+    gap:10px;
+  }
+  .section-intro h2{font-size:24px}
+  .section-intro p:not(.eyebrow){font-size:11px}
+  .section-intro .primary{width:100%}
+
+  .toolbar{gap:8px;margin-bottom:13px}
+  .toolbar input,.toolbar select{width:100%;padding:10px 11px}
+
+  .cards-grid{
+    grid-template-columns:1fr;
+    gap:11px;
+  }
+  .item-card{
+    min-height:170px;
+    padding:16px;
+    border-radius:13px;
+  }
+
+  .modal{padding:12px}
+  .modal-card{
+    width:100%;
+    max-height:88vh;
+    overflow:auto;
+    padding:17px;
+    border-radius:15px;
+  }
+
+  /* Keep RTL mobile navigation clean */
+  html[dir="rtl"] .sidebar{
+    left:0;
+    right:0;
+    border-left:0;
+    border-right:0;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px){
+  .main,
+  html[dir="rtl"] .main{
+    padding-left:10px;
+    padding-right:10px;
+  }
+  .topbar{gap:5px}
+  .topbar h1{font-size:19px}
+  .profile{display:none}
+  .hero{padding:20px 17px}
+  .hero h2{font-size:20px}
+  .stat-card{padding:12px}
+  .nav-item b{font-size:9px}
+}
