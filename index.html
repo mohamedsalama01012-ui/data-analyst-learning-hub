@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analyst Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">DA</div>
+        <div>
+          <strong data-i18n="brand">Analyst Hub</strong>
+          <span data-i18n="workspace">Learning Workspace</span>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-section="dashboard"><span>⌂</span> <b data-i18n="dashboard">Dashboard</b></button>
+        <button class="nav-item" data-section="courses"><span>▣</span> <b data-i18n="courses">Courses</b></button>
+        <button class="nav-item" data-section="datasets"><span>◫</span> <b data-i18n="datasets">Datasets</b></button>
+        <button class="nav-item" data-section="projects"><span>◆</span> <b data-i18n="projects">Projects</b></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="progress-mini">
+          <div class="progress-label"><span data-i18n="learningProgress">Learning progress</span><b id="sideProgress">0%</b></div>
+          <div class="progress-track"><div id="sideProgressBar"></div></div>
+        </div>
+        <button class="theme-btn" id="themeBtn">☾ <span data-i18n="darkMode">Dark mode</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MY DATA ANALYTICS WORKSPACE</p>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <div class="lang-switch" aria-label="Language selector"><button type="button" id="enBtn" class="lang-btn active">EN</button><button type="button" id="arBtn" class="lang-btn">AR</button></div>
+          <button class="icon-btn" id="resetBtn" title="Reset demo data">↻</button>
+          <button class="profile"><span class="avatar">MS</span><span>Mohamed Salama</span></button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="section active">
+        <div class="hero">
+          <div>
+            <p class="eyebrow" data-i18n="learningSystem">YOUR LEARNING SYSTEM</p>
+            <h2 data-i18n="heroTitle">Build your path from <span>learning → data → projects.</span></h2>
+            <p data-i18n="heroText">Organize your Data Analyst courses, datasets and portfolio projects in one clean workspace.</p>
+            <button class="primary" data-go="courses" data-i18n="manageCourses">Manage my courses →</button>
+          </div>
+          <div class="hero-orb"><div>DA</div></div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><span data-i18n="courses">Courses</span><strong id="statCourses">0</strong><small data-i18n="learningResources">learning resources</small></div>
+          <div class="stat-card"><span data-i18n="datasets">Datasets</span><strong id="statDatasets">0</strong><small data-i18n="practiceFiles">practice files</small></div>
+          <div class="stat-card"><span data-i18n="projects">Projects</span><strong id="statProjects">0</strong><small data-i18n="portfolioProjects">portfolio projects</small></div>
+          <div class="stat-card"><span>Progress</span><strong id="statProgress">0%</strong><small data-i18n="coursesCompleted">courses completed</small></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="panel">
+            <div class="panel-head"><div><h3 data-i18n="learningRoadmap">Learning roadmap</h3><p data-i18n="currentCourses">Your current course collection</p></div><button class="text-btn" data-go="courses" data-i18n="viewAll">View all</button></div>
+            <div id="roadmap"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h3 data-i18n="latestProjects">Latest projects</h3><p data-i18n="portfolioSnapshot">Portfolio snapshot</p></div><button class="text-btn" data-go="projects" data-i18n="viewAll">View all</button></div>
+            <div id="latestProjects"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" class="section">
+        <div class="section-intro">
+          <div><p class="eyebrow" data-i18n="learningLibrary">LEARNING LIBRARY</p><h2 data-i18n="courses">Courses</h2><p data-i18n="courseIntro">Save every course with its lessons, provider and learning link.</p></div>
+          <button class="primary" id="addCourseBtn" data-i18n="addCourse">+ Add course</button>
+        </div>
+        <div class="toolbar"><input id="courseSearch" placeholder="Search courses..." data-i18n-placeholder="searchCourses" /><select id="courseFilter"><option value="all" data-i18n="allStatus">All status</option><option value="active" data-i18n="inProgress">In progress</option><option value="done" data-i18n="completed">Completed</option></select></div>
+        <div class="cards-grid" id="courseList"></div>
+      </section>
+
+      <section id="datasets" class="section">
+        <div class="section-intro">
+          <div><p class="eyebrow" data-i18n="practiceData">PRACTICE DATA</p><h2 data-i18n="datasets">Datasets</h2><p data-i18n="datasetIntro">Keep the data files and source links connected to your learning.</p></div>
+          <button class="primary" id="addDatasetBtn" data-i18n="addDataset">+ Add dataset</button>
+        </div>
+        <div class="cards-grid" id="datasetList"></div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-intro">
+          <div><p class="eyebrow" data-i18n="portfolio">PORTFOLIO</p><h2 data-i18n="projects">Projects</h2><p data-i18n="projectIntro">Document what you build and keep a direct link to the project.</p></div>
+          <button class="primary" id="addProjectBtn" data-i18n="addProject">+ Add project</button>
+        </div>
+        <div class="cards-grid" id="projectList"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="modalTitle">Add item</h3><button class="close" id="closeModal">×</button></div>
+      <form id="itemForm"></form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
